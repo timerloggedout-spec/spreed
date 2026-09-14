@@ -27,7 +27,7 @@
  * Requires: git.
  *
  * Usage:
- *   node scripts/update-milestones.mjs <stable-branch> [options]
+ *   npm run release:update-milestones -- <stable-branch> [options]
  *
  * Arguments:
  *   <stable-branch>   The stable branch that was just released, e.g. stable33
@@ -48,7 +48,7 @@ const REPO = 'nextcloud/spreed'
 
 /** Print usage information and exit. */
 function usage() {
-	print.log(`Usage: node scripts/update-milestones.mjs <STABLE_BRANCH> [OPTIONS]
+	print.log(`Usage: npm run release:update-milestones -- <STABLE_BRANCH> [OPTIONS]
 
 Roll the milestones over after releasing <STABLE_BRANCH>: rename the open
 "Next Patch/RC/Major (X)" milestone matching the Nextcloud stable branch
@@ -69,8 +69,8 @@ OPTIONS:
     -h, --help          Show this help message
 
 EXAMPLES:
-    node scripts/update-milestones.mjs stable33
-    node scripts/update-milestones.mjs stable34 --last
+    npm run release:update-milestones -- stable33
+    npm run release:update-milestones -- stable34 --last
 `)
 	process.exit(0)
 }

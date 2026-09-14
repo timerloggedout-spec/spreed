@@ -10,7 +10,7 @@
  * Requires: git, npm.
  *
  * Usage:
- *   node scripts/bump-version.mjs <changelog-pr-number|branch-name>
+ *   npm run release:bump-version -- <changelog-pr-number|branch-name>
  *
  * Arguments:
  *   <changelog-pr-number>   GitHub PR number of the backported changelog PR
@@ -31,7 +31,7 @@ const REPO = 'nextcloud/spreed'
 
 /** Print usage information and exit. */
 function usage() {
-	print.log(`Usage: node scripts/bump-version.mjs <changelog-pr-number|branch-name>
+	print.log(`Usage: npm run release:bump-version -- <changelog-pr-number|branch-name>
 
 Check out the given changelog backport PR (or an existing branch), bump the
 version in appinfo/info.xml and package.json, then commit the result.
@@ -46,8 +46,8 @@ Options:
     -h, --help   Show this help message
 
 Examples:
-    node scripts/bump-version.mjs 18500
-    node scripts/bump-version.mjs stable33
+    npm run release:bump-version -- 18500
+    npm run release:bump-version -- stable33
 `)
 	process.exit(0)
 }

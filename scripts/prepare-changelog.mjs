@@ -11,7 +11,7 @@
  * Requires: git.
  *
  * Usage:
- *   node scripts/prepare-changelog.mjs [options] [stable-branch...]
+ *   npm run release:prepare-changelog -- [options] [stable-branch...]
  *
  * Arguments:
  *   stable-branch   Specific stable branches to check (e.g. stable33 stable34).
@@ -31,7 +31,7 @@ const REPO = 'nextcloud/spreed'
 
 /** Print usage information and exit. */
 function usage() {
-	print.log(`Usage: node scripts/prepare-changelog.mjs [OPTIONS] [STABLE_BRANCH...]
+	print.log(`Usage: npm run release:prepare-changelog -- [OPTIONS] [STABLE_BRANCH...]
 
 Generate changelog entries for the given stable branches and commit them
 locally (push and PR stay manual).
@@ -45,9 +45,9 @@ ARGUMENTS:
                     If not provided, automatically selects maintained versions from dependabot.yml
 
 EXAMPLES:
-    node scripts/prepare-changelog.mjs                     # Prepare changelog for maintained stable branches
-    node scripts/prepare-changelog.mjs stable33 stable34   # Prepare changelog for specific branches
-    node scripts/prepare-changelog.mjs --dry-run           # Preview changelog without making changes
+    npm run release:prepare-changelog                         # Prepare changelog for maintained stable branches
+    npm run release:prepare-changelog -- stable33 stable34    # Prepare changelog for specific branches
+    npm run release:prepare-changelog -- --dry-run            # Preview changelog without making changes
 `)
 	process.exit(0)
 }

@@ -12,7 +12,7 @@
  * Requires: git.
  *
  * Usage:
- *   node scripts/validate-release.mjs [options] [stable-branch...]
+ *   npm run release:validate-release -- [options] [stable-branch...]
  *
  * Arguments:
  *   stable-branch   Specific stable branches to check (e.g. stable33 stable34).
@@ -32,7 +32,7 @@ const REPO = 'nextcloud/spreed'
 
 /** Print usage information and exit. */
 function usage() {
-	print.log(`Usage: node scripts/validate-release.mjs [OPTIONS] [STABLE_BRANCH...]
+	print.log(`Usage: npm run release:validate-release -- [OPTIONS] [STABLE_BRANCH...]
 
 Gather release preparation information for Nextcloud Spreed
 
@@ -47,9 +47,9 @@ ARGUMENTS:
                     If not provided, automatically selects maintained versions from dependabot.yml
 
 EXAMPLES:
-    node scripts/validate-release.mjs                     # Check maintained stable branches
-    node scripts/validate-release.mjs stable33 stable34   # Check specific branches
-    node scripts/validate-release.mjs --verbose            # Show every open issue, not just high-priority
+    npm run release:validate-release                          # Check maintained stable branches
+    npm run release:validate-release -- stable33 stable34     # Check specific branches
+    npm run release:validate-release -- --verbose             # Show every open issue, not just high-priority
 `)
 	process.exit(0)
 }
@@ -403,7 +403,7 @@ function printNextSteps() {
 
 	print.log()
 	print.log(`${COLOR.CYAN}Address any blockers above, then:${COLOR.NC}`)
-	print.log('  1. Prepare changelog:  make prepare-changelog')
+	print.log('  1. Prepare changelog:  npm run release:prepare-changelog')
 	print.log('     Review and adjust docs/changelogs/*.md, then push and open a PR')
 	print.log('  2. Follow https://github.com/nextcloud/spreed/issues/5879 template')
 }
